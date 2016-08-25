@@ -11,13 +11,13 @@ import bbobbenchmarks
 #########User-configured Parameters:
 #Numbered from 1 (Sphere Function) to 24 (Lunacek bi-Rastrigin Function)
 #as they occur in http://coco.lri.fr/downloads/download15.03/bbobdocfunctions.pdf
-ProblemID=8
+ProblemID=21
 
 #Range for X,Y to display
-xLimitLower = -5.01
-xLimitUpper = 5.01
-yLimitLower = -5.01
-yLimitUpper = 5.01
+xLimitLower = -5.05
+xLimitUpper = 5.05
+yLimitLower = -5.05
+yLimitUpper = 5.05
 
 #Samplepoints per dimension (remember the total number of points is samplepoints²)
 samplepoints = 101
@@ -41,6 +41,8 @@ def func(x, y):
     coord = np.array([x-xopt,y-yopt])
     _, funValue = problem._evalfull(coord)
     return funValue
+    #This return is much better for some problems
+    #return np.log10(funValue - optimalFunValue)
 
 #Generating the global optimum somewhere inside [-4,4]
 xopt = np.random.uniform(-4,4)
@@ -57,7 +59,7 @@ Z = func(X[:,None], Y[None,:])
 X, Y = np.meshgrid(X, Y) #needed for getting everything plotted
 
 #Plot itself
-surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=True)
+surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.jet, linewidth=0, antialiased=False)
 
 #Defining the "Viewport"
 ax.set_xlim(-5.01,5.01)
