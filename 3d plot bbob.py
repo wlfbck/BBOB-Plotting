@@ -69,6 +69,13 @@ if(autoZ):
 else:
     ax.set_zlim(optimalFunValue - zLimitBelow, optimalFunValue + zLimitAbove)
 
+#Axis Labels
+ax.set_xlabel('x1')
+ax.set_ylabel('x2')
+ax.set_zlabel('f')
+#Label for the logarithmic return value
+#ax.set_zlabel('$log_{10}(f-f_{opt})$')
+
 #Inverting the zaxis makes for better images
 plt.gca().invert_zaxis()
 
